@@ -1,9 +1,26 @@
+<table>
+<tr>
+<td>DL</td>
+<td>DM</td>
+<td>DC</td>
+<td>DJ</td>
+<td>DV</td>
+<td>DS</td>
+<td>DG</td>
+</table>
 <?php
-$contador=20;
-while ($contador > 0) {
-	echo str_repeat ("M' agrada programar en PHP<br>",50);
-	echo "<br>" ;
-	$contador --;
+echo "<tr>";
+$contador=1;
+$desplazamiento=3;
 
+
+while($contador < 32){
+    echo("$contador ");
+    $contador ++;
+
+    if ($contador%7==1){
+        echo "<br>";
+    }
 }
 ?>
+

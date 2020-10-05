@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CALENDARIO</title>
-</head>
-<body>
-    
-    <?php
-    $mes=date("m");
-    $año=date("Y");
-    $dia_semana= date("w", mktime(0,0,0, $mes, 1 $any));
-    $running_day= ()
-    $dias_mes=date("t", mktime(0, 0, 0, $mes,1,$any));
-    $semana= array("DL", "DM", "DC", "DJ", "DV", "DS", "DG");
-    $meses= array("ENERO", "FEBRERO", "MARZO", "ABRIL", "MAIG", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE");
+<table>
+<tr>
+<td>DL</td>
+<td>DM</td>
+<td>DC</td>
+<td>DJ</td>
+<td>DV</td>
+<td>DS</td>
+<td>DG</td>
+</table>
+<?php
+$contador=1;
 
-    
+while($contador < 32){
+    echo("$contador ");
+    $contador ++;
 
-    ?>
+    if ($contador%7==1){
+        echo "<br>";
+    }
+}
+?>
