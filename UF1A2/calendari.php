@@ -6,15 +6,12 @@
 <td>DV</td>
 <td>DS</td>
 <td>DG</td>
-</table>
-
-
+</TABLE>
 
 
 
 
 <?php
-
 $contador=1;
 
 
