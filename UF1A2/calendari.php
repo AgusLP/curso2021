@@ -10,11 +10,7 @@
 </table>
 <?php
 $contador=1;
-$mes=date("n");
-$año=date("Y");
-$diaActual=date("j");
-$diasemana=date("w", mktime(0,0,0, $mes, 1, $año))+7;
-$diames=date("d",(mktime(0,0,0, $mes+1,1,$año)-1));
+
 
 while($contador < 32){
     echo("$contador ");
