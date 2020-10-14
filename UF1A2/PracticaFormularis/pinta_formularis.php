@@ -8,7 +8,23 @@
 </head>
 
 <body>
-
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    print_r("El texto dice: ".$_REQUEST["mytext"]);
+    echo"<br>";
+    print_r("Has escogido el radio numero: ".$_REQUEST["myradio"]);
+    echo"<br>";
+    print_r("Has escogido la checkbox numero: ".$_REQUEST["mycheckbox"]);
+    echo "<br>";
+    print_r($_REQUEST["myselect"]);
+    echo"<br>";
+    print_r("Este es tu texto: ".$_REQUEST["mytextarea"]);
+    echo"<br>";
+    
+} else {
+   
+}
+?>
 <div style="margin: 30px 10%;">
 <h3>My form</h3>
 <form action="processa_dades.php" method="post" id="myform" name="myform">

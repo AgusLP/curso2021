@@ -1,15 +1,13 @@
 <?php
-   print_r($_REQUEST["mytext"]);
+   print_r("Texto: ".$_REQUEST["mytext"]);
    echo"<br>";
-   print_r($_REQUEST["myradio"]);
+   print_r("Has escogido el radio numero: ".$_REQUEST["myradio"]);
    echo"<br>";
-   print_r($_REQUEST["mycheckbox"]);
-   echo "<br>";
-   print_r($_REQUEST["myselect"]);
+   print_r("Has seleccionado: ".$_REQUEST["myselect"]);
    echo"<br>";
-   print_r($_REQUEST["mytextarea"]);
+   print_r("Este es tu texto: ".$_REQUEST["mytextarea"]);
    echo"<br>";
-   print_r($_REQUEST["mytext"]);
+   
 
 ?>
 
