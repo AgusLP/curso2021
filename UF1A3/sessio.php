@@ -20,6 +20,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "No esta en el formato que tiene que ser";
     }
 }
+if ($_COOKIE["usercookie"]== sha1(md5("marc@gmail.com")) && $_COOKIE["passcookie"] == sha1(md5("abcd"))) {
+    header("Location: ./sessio2.php");
+}
+
 
 
 ?>
