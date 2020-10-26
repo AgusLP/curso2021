@@ -1,7 +1,12 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
+    
     session_destroy();
+    session_unset();
+    setcookie("usercookie", null, null, null);
+    setcookie("passcookie", null, null, null);
+    header("Location: ./session.php");
 }
     if (isset($_SESSION["usuario"]) or isset($_SESSION["contraseña"])){
         echo $_SESSION["usuario"];
