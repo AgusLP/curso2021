@@ -1,8 +1,24 @@
 <?php
 
 session_start();
-
 include "libreria.php";
+$conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM usuario";
+$result = $conn->prepare($sql);
+if(!$resultado = $conn ->query($sql)){
+    die("Error ejecutando la consulta: ".$conn->error); 
+}
+while ($usuari = $resultado->fetch_assoc()){
+    echo $usuari["users"].",".$usuari["passwords"]."<br>";
+}
+$resultado-> free();
+$conn->close();
+
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $_SESSION["usuario"]= $_REQUEST["nombre"];
     $_SESSION["contraseña"]= $_REQUEST["pass"];
