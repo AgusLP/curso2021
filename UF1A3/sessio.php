@@ -2,11 +2,38 @@
 
 session_start();
 include "libreria.php";
-$conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$fallon="";
+$fallocontra="";
+$error= false;
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $nombre = $_POST["nombre"];
+    $pass = $_POST["pass"];
+    if (filter_var($nombre)== false) {
+        $fallon="La ha de ser un mail";
+        $error = true;
+    }   
+    if (preg_match ("/^[a-zA-Z0-9]+$/", $pass)== false){
+        $fallocontra= "La password solo de numeros o de letras ";
+        $error= true;
+    }        
 
+      
+    try{
+        $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+    $sql = "INSERT INTO usuario (users, passwords) VALUES (?, ?)";
+    $res=$conn->prepare($sql);
+    $res->bind_param("ss", $nombre, $pass);
+    $res->execute();
+    $conn->close();
+ }catch(mysqli_sql_exception $e) {
+     $e->errorMessage();
+ }
+}
+/*
 $sql = "SELECT * FROM usuario";
 $result = $conn->prepare($sql);
 if(!$resultado = $conn ->query($sql)){
@@ -17,29 +44,7 @@ while ($usuari = $resultado->fetch_assoc()){
 }
 $resultado-> free();
 $conn->close();
-
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $_SESSION["usuario"]= $_REQUEST["nombre"];
-    $_SESSION["contraseña"]= $_REQUEST["pass"];
-    setcookie("usercookie", sha1(md5($_REQUEST["nombre"])), time() + 365 * 24 * 60 * 60 );
-    setcookie("passcookie", sha1(md5($_REQUEST["pass"])), time() + 365 * 24 * 60 * 60 );
-    $email = correo($_SESSION["usuario"]);
-    $Comprovacioncontra = contraseña($_SESSION["contraseña"]);
-    if ($email = TRUE && $Comprovacioncontra = TRUE ){
-        if ($_COOKIE["usercookie"]== sha1(md5("marc@gmail.com")) && $_COOKIE["passcookie"] == sha1(md5("abcd"))) {
-            header("Location: ./sessio2.php");
-        }else{
-            echo "Te has equivocado";
-        }
-    }else{
-        echo "No esta en el formato que tiene que ser";
-    }
-}
-
-
-
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
