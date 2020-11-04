@@ -1,64 +1,55 @@
 <?php
 
 session_start();
-include "libreria.php";
-$fallon="";
-$fallocontra="";
-$error= false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $nombre = $_POST["nombre"];
-    $pass = $_POST["pass"];
-    if (filter_var($nombre)== false) {
-        $fallon="La ha de ser un mail";
-        $error = true;
-    }   
-    if (preg_match ("/^[a-zA-Z0-9]+$/", $pass)== false){
-        $fallocontra= "La password solo de numeros o de letras ";
-        $error= true;
-    }        
 
-      
-    try{
-        $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+
+include "librerias.php";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $_SESSION["usuario"] = $_REQUEST["email"];
+    $_SESSION["contraseña"] = $_REQUEST["password"];
+    setcookie("user", sha1(md5($_REQUEST["email"])), time() + 365 * 24 * 60 * 60); 
+    setcookie("contraseña", sha1(md5($_REQUEST["password"])), time() + 365 * 24 * 60 * 60); 
+    $conn = new msqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
+    if ($conn -> connect_error){
+        die("Connection failed: ". $conn -> connect_error);
+    }
+    $usuari= $_REQUEST["email"];
+    $contra= $_REQUEST["password"];
+
+    $comprovaremail=correo($_SESSION["usuario"]);
+    $comprovarcontraseña=contraseña($_SESSION["contraseña"]);
+    if ($comprovaremail=true && $comprovarcontraseña=true){
+        if ($_COOKIE["user"] == sha1(md5("marc@gmail.com")) && $_COOKIE["contraseña"] == sha1(md5("abcd"))){
+            header("Location: ./sessions2.php");
+        }else{
+            echo "Este correo no existe";
         }
 
-    $sql = "INSERT INTO usuario (users, passwords) VALUES (?, ?)";
-    $res=$conn->prepare($sql);
-    $res->bind_param("ss", $nombre, $pass);
-    $res->execute();
-    $conn->close();
- }catch(mysqli_sql_exception $e) {
-     $e->errorMessage();
- }
+    }else{
+        echo "Este correo no está en el formato idoneo";
+    }
+}else{
+    header("Location: registro.php");
 }
-/*
-$sql = "SELECT * FROM usuario";
-$result = $conn->prepare($sql);
-if(!$resultado = $conn ->query($sql)){
-    die("Error ejecutando la consulta: ".$conn->error); 
-}
-while ($usuari = $resultado->fetch_assoc()){
-    echo $usuari["users"].",".$usuari["passwords"]."<br>";
-}
-$resultado-> free();
-$conn->close();
-*/
+
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="sessio.php" method="post">
-        Nombre: <input type="text" name="nombre"></br>
-        Contraseña: <input type="password" name="pass">
-        Aceptar cookies: <input type="checkbox" name="Aceptar">
-        <input type="submit" value="enviar">
-    </form>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>Iniciar Sesion:</h2>
+        <form action="sessions.php "method="post">
+            <label>Nombre usuario: </label> <input type="text" value="" size="30" maxlength="100" name="email" id="" /><br /><br />
+            <label>Contraseña: </label> <input type="password" value="" size="30" maxlength="100" name="password" id="" /><br /><br />
+            <lable>Aceptar Cookies</label><input type="checkbox" name="Aceptar"><br></br>
+            <lable>Rechazar Cookies</label><input type="checkbox" name="Rechazar"><br></br>
+            <button id="mysubmit" type="submit">Enviar</button>
+            <button name="registrar" type="submit">Registarse</button>
+        </form>
+    </body>
+    </html>

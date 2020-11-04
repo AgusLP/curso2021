@@ -28,6 +28,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 <body>
     <form action="sessio2.php" method="post">
         <input type="submit" value="Log out">
+        Nombre: <input type="text" name="nombre"></br>
+        Contraseña: <input type="password" name="pass">
     </form>
 </body>
 </html>
