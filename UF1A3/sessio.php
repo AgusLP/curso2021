@@ -21,15 +21,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if ($comprovaremail=true && $comprovarcontraseña=true){
         if ($_COOKIE["user"] == sha1(md5("marc@gmail.com")) && $_COOKIE["contraseña"] == sha1(md5("abcd"))){
             header("Location: ./sessions2.php");
-        }else{
-            echo "Este correo no existe";
+            }else{
+                echo "Este correo no existe";
         }
 
-    }else{
+        }else{
         echo "Este correo no está en el formato idoneo";
-    }
-}else{
-    header("Location: registro.php");
+        }
+    }else{
+        header("Location: registro.php");
 }
 
 
