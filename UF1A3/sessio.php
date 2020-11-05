@@ -3,7 +3,7 @@
 session_start();
 
 
-include "librerias.php";
+include "libreria.php";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $_SESSION["usuario"] = $_REQUEST["email"];
     $_SESSION["contraseña"] = $_REQUEST["password"];
@@ -18,19 +18,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $comprovaremail=correo($_SESSION["usuario"]);
     $comprovarcontraseña=contraseña($_SESSION["contraseña"]);
-    if ($comprovaremail=true && $comprovarcontraseña=true){
-        if ($_COOKIE["user"] == sha1(md5("marc@gmail.com")) && $_COOKIE["contraseña"] == sha1(md5("abcd"))){
-            header("Location: ./sessions2.php");
+    if(isset($_REQUEST["email"])){
+        if ($comprovaremail=true && $comprovarcontraseña=true){
+            if ($_COOKIE["user"] == sha1(md5("marc@gmail.com")) && $_COOKIE["contraseña"] == sha1(md5("abcd"))){
+                header("Location: ./sessions2.php");
             }else{
                 echo "Este correo no existe";
-        }
+            }
 
         }else{
-        echo "Este correo no está en el formato idoneo";
+            echo "Este correo no está en el formato idoneo";
+            
         }
-    }else{
-        header("Location: registro.php");
-}
+               
+            }
+        }
 
 
 ?>
@@ -43,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </head>
     <body>
         <h2>Iniciar Sesion:</h2>
-        <form action="sessions.php "method="post">
+        <form action="registro.php "method="post">
             <label>Nombre usuario: </label> <input type="text" value="" size="30" maxlength="100" name="email" id="" /><br /><br />
             <label>Contraseña: </label> <input type="password" value="" size="30" maxlength="100" name="password" id="" /><br /><br />
             <lable>Aceptar Cookies</label><input type="checkbox" name="Aceptar"><br></br>
