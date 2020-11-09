@@ -16,7 +16,7 @@
 
         if ($_SERVER['REQUEST_METHOD']=='POST'){
             if (isset($_POST["regUser"]) and isset($_POST["regPass"])) {
-                $conn = new mysqli('localhost', 'abalague', 'abalague', 'abalague_login');
+                $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
 
                 $regUser = $_REQUEST["regUser"];
                 $regPass = $_REQUEST["regPass"];
@@ -26,7 +26,7 @@
                 if ($comprovaciomail == TRUE and $comprovaciopass == TRUE){ 
                     $sql = "INSERT INTO users (user , password, role) VALUES ('$regUser', '$regPass', 'user')";
                     $result = (mysqli_query($conn, $sql) or die("Error: ". mysqli_error($conn)));
-                    header ("Location: http://dawjavi.insjoaquimmir.cat/abalague/UF1/a5/session.php");
+                    header ("Location: http://dawjavi.insjoaquimmir.cat/mbalague/UF1/a5/session.php");
                 }else {
                     echo "Assegurat que escrius un mail i una contrassenya correcta";
                 }

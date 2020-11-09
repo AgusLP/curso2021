@@ -11,7 +11,7 @@
                 header ("Location: https://www.google.com/?hl=ca");
             }
         }else if (isset($_POST["user"]) and isset($_POST["pass"])) {
-            $conn = new mysqli('localhost', 'abalague', 'abalague', 'abalague_login');
+            $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'abalague_login');
             $user = $_REQUEST["user"];
             $pass = $_REQUEST["pass"];
             $sql = "SELECT * FROM users WHERE user = '$user' and password = '$pass'";
@@ -29,14 +29,14 @@
                 if ($result -> num_rows > 0){
                     while ($usuario = $result->fetch_assoc()){
                         $conn->close();
-                        header("Location: http://dawjavi.insjoaquimmir.cat/abalague/UF1/a5/privada.php");
+                        header("Location: http://dawjavi.insjoaquimmir.cat/mbalague/UF1/a5/privada.php");
                     }
                 }
             }else {
                 echo "Contrasenya o mail sense el format indicat.";
             }
         }else if(isset($_POST["register"])){
-            header ("Location: http://dawjavi.insjoaquimmir.cat/abalague/UF1/a5/register.php");
+            header ("Location: http://dawjavi.insjoaquimmir.cat/mbalague/UF1/a5/register.php");
         }
     }
 ?>

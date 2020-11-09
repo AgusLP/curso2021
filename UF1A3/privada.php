@@ -14,7 +14,7 @@
     if (isset($_SESSION["newses"]) or isset($_SESSION["newpass"])){
         $user = $_SESSION["newses"];
         
-        $conn = new mysqli('localhost', 'abalague', 'abalague', 'abalague_login');
+        $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
     
         $roles = contRol($conn, $user);
 

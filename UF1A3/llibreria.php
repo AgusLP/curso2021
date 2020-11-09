@@ -15,7 +15,7 @@
     }
     function closeS(){
         session_destroy();
-        header ("Location: http://dawjavi.insjoaquimmir.cat/abalague/UF1/a5/session.php");
+        header ("Location: http://dawjavi.insjoaquimmir.cat/mbalague/UF1/a5/session.php");
     }
     function consultaUsers($conn ,$user){
         $sql = "SELECT * FROM users WHERE user = '$user'";
