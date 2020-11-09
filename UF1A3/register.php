@@ -24,7 +24,7 @@
                 $comprovaciopass = validaciopass($regPass);
 
                 if ($comprovaciomail == TRUE and $comprovaciopass == TRUE){ 
-                    $sql = "INSERT INTO users (user , password, role) VALUES ('$regUser', '$regPass', 'user')";
+                    $sql = "INSERT INTO users (user , password, role) VALUES ('$regUser', '$regPass', 'USER')";
                     $result = (mysqli_query($conn, $sql) or die("Error: ". mysqli_error($conn)));
                     header ("Location: http://dawjavi.insjoaquimmir.cat/mbalague/UF1/a5/session.php");
                 }else {

@@ -11,8 +11,8 @@
     session_start();
     require "llibreria.php";
 
-    if (isset($_SESSION["newses"]) or isset($_SESSION["newpass"])){
-        $user = $_SESSION["newses"];
+    if (isset($_SESSION["email"]) or isset($_SESSION["Password"])){
+        $user = $_SESSION["email"];
         
         $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
     
@@ -112,7 +112,7 @@
                 }
         }
     }else{
-        header("Location: http://dawjavi.insjoaquimmir.cat/abalague/UF1/a5/session.php");
+        header("Location: https://dawjavi.insjoaquimmir.cat/mbalague/curso2021/UF1A3/session.php");
     }
 ?>
 </body>

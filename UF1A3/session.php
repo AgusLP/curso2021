@@ -11,32 +11,32 @@
                 header ("Location: https://www.google.com/?hl=ca");
             }
         }else if (isset($_POST["user"]) and isset($_POST["pass"])) {
-            $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'abalague_login');
+            $conn = new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_');
             $user = $_REQUEST["user"];
             $pass = $_REQUEST["pass"];
-            $sql = "SELECT * FROM users WHERE user = '$user' and password = '$pass'";
+            $sql = "SELECT * FROM USER WHERE email = '$user' and password = '$pass'";
             $result = $conn->prepare($sql);
 
-            $_SESSION["newses"]=$_REQUEST["user"];
-            $_SESSION["newpass"]=$_REQUEST["pass"];
+            $_SESSION["email"]=$_REQUEST["user"];
+            $_SESSION["Password"]=$_REQUEST["pass"];
             if (!$result = $conn->query($sql)){
                 die ("error");
             }
-            $comprovaciomail = validacio($_SESSION["newses"]);
-            $comprovaciopass = validaciopass($_SESSION["newpass"]);
+            $comprovaciomail = validacio($_SESSION["email"]);
+            $comprovaciopass = validaciopass($_SESSION["Password"]);
             if ($comprovaciomail == TRUE and $comprovaciopass == TRUE){ 
 
                 if ($result -> num_rows > 0){
                     while ($usuario = $result->fetch_assoc()){
                         $conn->close();
-                        header("Location: http://dawjavi.insjoaquimmir.cat/mbalague/UF1/a5/privada.php");
+                        header("Location: http://dawjavi.insjoaquimmir.cat/mbalague/curso2021/UF1A3/privada.php");
                     }
                 }
             }else {
                 echo "Contrasenya o mail sense el format indicat.";
             }
         }else if(isset($_POST["register"])){
-            header ("Location: http://dawjavi.insjoaquimmir.cat/mbalague/UF1/a5/register.php");
+            header ("Location: https://dawjavi.insjoaquimmir.cat/mbalague/curso2021/UF1A3/register.php");
         }
     }
 ?>
