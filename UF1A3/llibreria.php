@@ -18,7 +18,7 @@
         header ("Location: https://dawjavi.insjoaquimmir.cat/mbalague/curso2021/UF1A3/session.php");
     }
     function consultaUsers($conn ,$user){
-        $sql = "SELECT * FROM users WHERE user = '$user'";
+        $sql = "SELECT * FROM USER WHERE user = '$user'";
             
         $resultat = $conn->prepare($sql);
         $resultat->execute();
@@ -32,7 +32,7 @@
     }
 
     function contRol($conn, $user){
-        $sqlr = "SELECT role FROM users WHERE user = '$user'";
+        $sqlr = "SELECT role FROM USER WHERE users = '$user'";
         $resultat = $conn->prepare($sqlr);
         $resultat->execute();
         $resultat->bind_result($roler);
@@ -43,7 +43,7 @@
     }
 
     function consultaTotal ($conn){
-        $sqlt = "SELECT * FROM users";
+        $sqlt = "SELECT * FROM USER";
         $resultat = $conn->prepare($sqlt);
         $resultat->execute();
         $resultat->bind_result($tuser, $tpass, $trole);
@@ -56,26 +56,28 @@
         echo "</table>";
     }
     function adminMod($conn, $user, $newuser, $newpass, $newrole){
-        $sqla = "UPDATE users SET user = '$newuser' , password = '$newpass', role = '$newrole' WHERE user='$user'";
+        $sqla = "UPDATE USER SET user = '$newuser' , password = '$newpass', role = '$newrole' WHERE user='$user'";
         $resultat = (mysqli_query($conn, $sqla) or die("Error". mysqli_error($conn)));
         echo "Tot ha anat bé torna a carregar la página per veure els canvis";
     }
     function usersUpdate($conn , $user, $newuser, $newpass){
-        $sqlup = "UPDATE users SET user = '$newuser' , password = '$newpass', role = 'user' WHERE user='$user'";
+        $sqlup = "UPDATE USER SET user = '$newuser' , password = '$newpass', role = 'user' WHERE user='$user'";
         $resultat = (mysqli_query($conn, $sqlup) or die("Error". mysqli_error($conn)));
         echo "Tot ha anat bé torna a session i entra de nou amb la teva nova info.";
     }
 
     function eliminarUsuari($conn, $deluser){
-        $sqld = "DELETE FROM users WHERE user = '$deluser'";
+        $sqld = "DELETE FROM USER WHERE user = '$deluser'";
         $resultat = mysqli_query($conn, $sqld) or die('Consulta fallida: ' . mysqli_error($conn));
         echo "<br>Recarrega la página per veure els canvis.";
     }
 
     function createUserA($conn, $newuser, $newpass, $newrole){
-        $sql = "INSERT INTO users (user , password, role) VALUES ('$regUser', '$regPass', '$newrole')";
+        $sql = "INSERT INTO USER (user , password, role) VALUES ('$regUser', '$regPass', '$newrole')";
         $result = (mysqli_query($conn, $sql) or die("Error: ". mysqli_error($conn)));
     }
+    
+    
 ?>
 
 

@@ -114,6 +114,23 @@
     }else{
         header("Location: https://dawjavi.insjoaquimmir.cat/mbalague/curso2021/UF1A3/session.php");
     }
-?>
-</body>
-</html>
+
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Productes</title>
+    </head>
+    <body>
+    <form action="privada.php" method="post">
+        <h1>Aquí pots afegir un producte</h1>
+        <p>Id del producte: </p><input type="text" name= "regId"><br>
+        <p>Nom del producte: </p><input type="text" name = "regNom"><br>
+        <p>Petita descripcio del producte: </p><input type="password" name="regPass"><br>
+        <p>Preu(€): </p><input type="text" name="regUser"><br>
+        <input type="submit" value="ok">
+    </form>
+    </body>
+    </html>

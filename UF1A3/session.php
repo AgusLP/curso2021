@@ -75,5 +75,13 @@
         <p>Si vols registrarte: </p>
         <input type="submit" value="registre" name="register">
     </form>
+    <form action="privada.php" method="post">
+        <h1>Aquí pots afegir un producte</h1>
+        <p>Id del producte: </p><input type="text" name= "regId"><br>
+        <p>Nom del producte: </p><input type="text" name = "regNom"><br>
+        <p>Petita descripcio del producte: </p><input type="text" name="regPass"><br>
+        <p>Preu(€): </p><input type="text" name="regUser"><br>
+        <input type="submit" value="ACABA">
+    </form>
 </body>
 </html>
