@@ -17,22 +17,22 @@
         session_destroy();
         header ("Location: https://dawjavi.insjoaquimmir.cat/mbalague/curso2021/UF1A3/session.php");
     }
-    function consultaUsers($conn ,$user){
+    function consultaProductes($conn ,$user){
         $sql = "SELECT * FROM USER WHERE user = '$user'";
             
         $resultat = $conn->prepare($sql);
         $resultat->execute();
-        $resultat->bind_result($tuser, $tpass, $role);
-        echo "<table border=1><tr><th  colspan ='3'><p><b>Aqui son les teves dades</b></p></th></tr>";
+        $resultat->bind_result($id, $nom, $descripcio, $preu, $id_user);
+        echo "<table border=1><tr><th  colspan ='3'><p><b>Aquest son els teus productes</b></p></th></tr>";
         echo "<tr><td><b>Mail</b></td><td><b>Password</b></td><td><b>Role</b></td></tr>";
         while($resultat->fetch()){
-            echo "<tr><td> $tuser </td><td> $tpass </td><td> $role </td></tr>";
+            echo "<tr><td> $id </td><td> $nom </td><td> $descripcio</td><td>$preu</td><td>$id_user</td></tr>";
         }
         echo "</table><br>";
     }
 
     function contRol($conn, $user){
-        $sqlr = "SELECT role FROM USER WHERE users = '$user'";
+        $sqlr = "SELECT id_role FROM USER WHERE user = '$user'";
         $resultat = $conn->prepare($sqlr);
         $resultat->execute();
         $resultat->bind_result($roler);
@@ -76,7 +76,10 @@
         $sql = "INSERT INTO USER (user , password, role) VALUES ('$regUser', '$regPass', '$newrole')";
         $result = (mysqli_query($conn, $sql) or die("Error: ". mysqli_error($conn)));
     }
-    
+    function insertarProducte($conn, $user){
+        $sql = "INSERT INTO PRODUCTE (id, Nom, Descripcio, Preu, id_user) VALUES ('$id', '$nom','$descripcio', '$preu', '$id_user')";
+        $result = (mysqli_query($conn, $sql) or die("Error: ". mysqli_error($conn)));
+    }
     
 ?>
 
