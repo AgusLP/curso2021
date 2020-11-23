@@ -1,1 +1,1 @@
-Su compra ha sido realizada con exito!!
+Tu compra se ha completado correctamente

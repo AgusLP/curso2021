@@ -162,8 +162,6 @@ política....<br>
 
 ?>
 
-<h1><a href="">Ver carrito</a></h1>
-    <h1><?=$errormsg?></h1>
     <form method="post">
         email:<input type="text" name="email" id=""><br>
         password: <input type="password" name="password" id="">
@@ -172,6 +170,7 @@ política....<br>
     <br>
     <a href="#" onclick="check();"> Regenerar password</a>
     <a href="register.php">Crear nou usuari</a>
+    <a href="#">Veure Cistella</a>
     <?
 
 }

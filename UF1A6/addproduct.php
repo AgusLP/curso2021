@@ -13,15 +13,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         addProduct($_REQUEST["nom"],$_REQUEST["desc"],$_REQUEST["precio"]);
         header("location:privada.php");
 
-
-
-
-
-
-
-
-
-
 }
 
 ?>
