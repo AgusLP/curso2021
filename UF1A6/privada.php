@@ -23,7 +23,7 @@ include("funcions.php");
     <?php
         if(isAdmin($_SESSION["login"])){
 
-            $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+            $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
             $sql = "select * from usuaris  ";
             if (!$resultado = $conn->query($sql)) {
               die("error ejecutando la consulta:".$conn->error);
@@ -49,7 +49,7 @@ include("funcions.php");
     
             echo "<h1>Listado Productos</h1><br><a href=\"addproduct.php\">[Nuevo producto]</a><br>";
     
-            $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+            $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
             $sql = "select * from productos where usuario_id = ".getUserID($_SESSION["login"]);
             if (!$resultado = $conn->query($sql)) {
               die("error ejecutando la consulta:".$conn->error);

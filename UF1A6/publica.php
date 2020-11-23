@@ -162,7 +162,7 @@ política....<br>
 
 ?>
 
-
+<h1><a href="">Ver carrito</a></h1>
     <h1><?=$errormsg?></h1>
     <form method="post">
         email:<input type="text" name="email" id=""><br>

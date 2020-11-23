@@ -41,7 +41,7 @@ $retorno=false;
 
 
 
-$conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+$conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
 $sql = "select * from productos  where id=".$idproducto."   and usuario_id=".getUserID($email);
 if (!$resultado = $conn->query($sql)) {
   die("error ejecutando la consulta:".$conn->error);
@@ -64,7 +64,7 @@ return $retorno;
 function getUserID($email){
 
   $usuari["id"]=0;
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "select * from usuaris where email='$email'  ";
   if (!$resultado = $conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -83,7 +83,7 @@ function getUserID($email){
 function getUserData($email){
 
   $usuari;
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "select * from usuaris where email='$email'  ";
   if (!$resultado = $conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -105,7 +105,7 @@ function getUserData($email){
 function getProductData($id){
 
   $producto;
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "select * from productos where id=$id  ";
   if (!$resultado = $conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -143,7 +143,7 @@ function generate_string( $strength = 16) {
 function userExists($email){
 
   $exists=false;
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "select * from usuaris where email='$email'  ";
   if (!$resultado = $conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -165,7 +165,7 @@ function deleteProductCategory($cat,$prod){
 
 
 
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "delete from categoria_producto where producto_id=$prod and categoria_id=$cat ";
   if (!$conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -184,7 +184,7 @@ function deleteImage($id,$ruta){
 
 
 
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "delete from imagenes where id=$id ";
   if (!$conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -206,7 +206,7 @@ function deleteProduct($id){
 
 
 
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "delete from productos where id=$id ";
   if (!$conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -220,7 +220,7 @@ function deleteUser($id){
 
 
 
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "delete from usuaris where id=$id ";
   if (!$conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -267,7 +267,7 @@ function updateUser($nom,$email,$password,$id){
 
 
 
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "update usuaris set nom='$nom',email='$email',password=md5('$password') where id=$id ";
   if (!$conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);
@@ -282,7 +282,7 @@ function addImageToProduct($ruta,$nom,$idproducto){
 
 
 
-  $conn = connectDB('localhost', 'javi', 'javi', 'javi_a5');
+  $conn = connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
   $sql = "insert into imagenes (nom,ruta,producto_id) values ('$nom','$ruta',$idproducto) ";
   if (!$conn->query($sql)) {
     die("error ejecutando la consulta:".$conn->error);

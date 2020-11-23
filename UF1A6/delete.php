@@ -4,7 +4,7 @@
 include("contrologin.php");
 include("funcions.php");
 
-if($_SESSION["login"]=="javipj@gmail.com"){
+if($_SESSION["login"]=="marc@gmail.com"){
 
     deleteUser($_REQUEST["id"]);
     header("location:privada.php");
