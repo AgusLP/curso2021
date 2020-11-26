@@ -18,8 +18,10 @@ include("funcions.php");
     Hola,
 
 
-    <a href="edituser.php?emailc=<?=$_SESSION["login"]?>">Edita les teves dades</a>
+    <a href="edituser.php?emailc=<?=$_SESSION["login"]?>">Edita les teves dades</a><br><a href="lista_productos.php">Llista Productes</a>
+
 <br>
+
 
     <?php
         if(isAdmin($_SESSION["login"])){
@@ -60,7 +62,7 @@ include("funcions.php");
 
 
             while($producto=$resultado->fetch_assoc()){
-                echo $producto["nom"].",".$producto["precio"]."<a href=\"editproduct.php?idc=".$producto["id"]."\">[E]</a><a onclick=\"return confirm('Are you sure?')\" hr$$)\" href=\"deleteproducto.php?id=".$producto["id"]."\">[D]</a><br>";
+                echo $producto["nom"].",".$producto["precio"]."<a href=\"editproduct.php?idc=".$producto["id"]."\">[Edit]</a><a onclick=\"return confirm('Are you sure?')\" hr$$)\" href=\"deleteproducto.php?id=".$producto["id"]."\">[Delete]</a>";
     
               }
     
@@ -69,5 +71,6 @@ include("funcions.php");
     
     
         ?>
+      
     </body>
     </html>    

@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'&&!isset($_REQUEST["busca"])) {
 
     $email = test_input($_POST["email"]);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error=TRUE;
+        $error=TRUE;connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
         $errormsg.= "Invalid email format";
     }
 
@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'&&!isset($_REQUEST["busca"])) {
     if (!preg_match("/^[a-zA-Z0-9' ]*$/",$password)) {
         $error=TRUE;
         $errormsg.=  "Only letters and numbers allowed";
-    }
+    }connectDB('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
 
 
 
