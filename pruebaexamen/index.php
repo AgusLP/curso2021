@@ -5,14 +5,16 @@
         $_SESSION["pass"]=$_POST["pass"];
         $user=$_POST["user"];
         $pass=md5($_POST["pass"]);
-        $conn= new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_ProvaUF1');
-        $sql="SELECT username, password FROM usuaris_examen";
+        echo "$user";
+        echo "$pass";
+        $conn= new mysqli('localhost', 'mbalague', 'mbalague', 'mbalague_login2');
+        $sql="SELECT email, password FROM usuaris";
         $result = $conn->prepare($sql);
         $result->execute();
-        $result->bind_result($tusername, $tpassword);
+        $result->bind_result($tnom, $tpass);
      
         while($result->fetch()) {
-           if ($user==$tusername and $pass=$tpassword){
+           if ($user==$tnom and $pass=$tpass){
                 header("Location: home.php");
            }
         }
@@ -29,11 +31,10 @@
 </head>
 <body>
 <form type="pruebaalex.php" method="post">
-        <p>Username: <input type="text" name="user"/></p></br>
-        <p>Password: <input type="password" name="pass"/></p></br>
-        <input type="submit" name="Entrar"/></br>
-        <input type="submit" name="RecoveryPass" value="RecoveryPass">
-        
+        <p>Nombre: <input type="text" name="user"/></p></br>
+        <p>Contraseña: <input type="password" name="pass"/></p></br>
+        <p><input type="submit" name="Entrar" value="Entrar"/>
+        <input type="submit" name="recovery" value="RecordarPass">
     </form>
 </body>
 </html>
